@@ -1,0 +1,14 @@
+/* css module = 평범한 css를 사용할 수 있도록 해줌 */
+/* .nav {
+    display: flex;
+    justify-content: space-between;
+    background: tomato;
+} */
+
+.link {
+    text-decoration: none;
+}
+
+.active {
+    color: tomato;    
+}
