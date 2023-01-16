@@ -8,6 +8,11 @@ export default function Home(){
         <NavBar />
         <h1>Nextjs {counter}</h1>
         <button onClick={() => setCounter((prev) => prev + 1)}>+</button>
+        <style jsx>{`
+          a {
+            color: #fff;
+          }
+        `}</style>
       </div>
       // Nextjs는 우리 앱의 초기 상태를 활용해서 미리 렌더링되어 옴
       // => pre-rendering
