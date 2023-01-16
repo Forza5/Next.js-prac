@@ -1,5 +1,10 @@
+import NavBar from "@/components/Navbar";
+
 export default function Next(){
-    return "Nextjs is good";
+    return <div>
+        <NavBar />
+        <h1>Nextjs</h1>
+    </div>
 }
 
 // next.js는 pages의 있는 파일 명을 기준으로 가져다가 url의 이름으로 사용함!!
