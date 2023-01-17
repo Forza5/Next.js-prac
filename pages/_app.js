@@ -5,16 +5,17 @@
 // _app.js에 넣어둔 청사진을 기반으로 확인
 // 쉽게 말해, _app.js는 blueprint(청사진)
 
-import NavBar from "@/components/Navbar";
+import Layout from "@/components/Layout";
 import "../styles/globals.css";
 
 // Nextjs는 Component prop에 내가 원하는 페이지를 넣으면, 그 페이지를 렌더링 함
 export default function App({Component, pageProps}){
     return (
       <>
-        <NavBar />
-        <Component {...pageProps} />
-        <span>Hello, Next.js</span>
+        <Layout>
+          <Component {...pageProps} />
+          <span>Hello, Next.js</span>
+        </Layout>
         {/* global style 적용 가능 */}
         <style jsx global>{`
           a {

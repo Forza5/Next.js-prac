@@ -1,10 +1,13 @@
-import NavBar from "@/components/Navbar";
+import Head from "next/head";
+import Seo from "@/components/Seo";
 
 export default function Next(){
-    return <div>
-        <NavBar />
+    return (
+      <div>
+        <Seo title="About" />
         <h1>Nextjs</h1>
-    </div>
+      </div>
+    );
 }
 
 // next.js는 pages의 있는 파일 명을 기준으로 가져다가 url의 이름으로 사용함!!
