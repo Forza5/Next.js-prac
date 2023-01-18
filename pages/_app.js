@@ -13,7 +13,7 @@ export default function App({Component, pageProps}){
     return (
       <>
         <Layout>
-          <Component {...pageProps} />
+          <Home {...pageProps} />
           <span>Hello, Next.js</span>
         </Layout>
         {/* global style 적용 가능 */}

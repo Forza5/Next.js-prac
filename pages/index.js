@@ -1,20 +1,13 @@
 import Seo from "@/components/Seo";
 import { useState, useEffect } from "react";
 
-export default function Home(){
+export default function Home({ results }){
     const [counter, setCounter] = useState(0);
     const [movies, setMovies] = useState([]);
-    useEffect(() => {
-      async () => {
-        const { results } = await (await fetch(`/api/movies`)).json();
-        setMovies(results);      
-      }
-    },[])
     return (
       <div className="container">
         <Seo title="Home" />
-        {!movies && <h4>Loading...</h4>}
-        {movies?.map(movie => {
+        {results?.map(movie => {
           <div className="movie" key={movie.id}>
             <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
             <h4>{movie.original_title}</h4>
@@ -65,6 +58,18 @@ export default function Home(){
     );
 }
 
+//getServerSideProps는 무조건 이 이름이어야함!!
+//client가 아닌 server쪽에서만 작동함
+//이 function은 오직 server side에서만 실행됨!!
+export async function getServerSideProps() {
+  const { results } = await (await fetch(`http://localhost:3000/api/movies`)).json();
+  return {
+    props: {
+      results,
+    }
+  }
+}
+
 /**
  * library = 개발자로서 내가 사용하는 것
  * -- 내가 사용하고 싶을 때 사용 가능 
@@ -82,4 +87,12 @@ export default function Home(){
  * -- framework 
  * => 예시를 들자면, 집 / 내가 코드를 적절한 곳에 넣어야 함
  * => 내가 그 집(framework)을 수정할 수는 없음!!
+ */
+
+
+// getServerSideProps
+/**
+ * pages에서 서버 측 렌더링 함수인 getServerSideProps함수를 export하는 경우
+ * Next.js는 getServerSideProps에서 반환된 데이터를 사용하여 각 request에서 이 페이지를 pre-render한다.
+ * getServerSideProps는 서버 측에서만 실행되면 브라우저에서는 실행되지 않는다.
  */
