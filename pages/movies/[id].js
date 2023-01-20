@@ -2,8 +2,10 @@ import { useRouter } from "next/router";
 
 export default function Detail(){
     const router = useRouter();
-    console.log(router);
-    return "detail";
+    return <div>
+        {/* router.query.title은 유저가 홈페이지에서 상세페이지로 넘어올때만 존재 */}
+        <h4>{router.query.title || "Loading..."}</h4>
+    </div>;
 }
 
 //Next.js에 '이것이 변수를 포함하는 Dynamic URL이다'라는 것을 알려주는 유일한 방법은
